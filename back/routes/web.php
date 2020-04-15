@@ -19,8 +19,13 @@ $router->get('/foo', function () {
     return 'Hello World';
 });
 
-$router->get('/dbtest', function () {
+$router->get('/getusers', function () {
     $results = app('db')->select("SELECT * FROM societedhonneur");
+    return $results;
+});
+
+$router->get('/getuser/{users}', function ($users) {
+    $results = app('db')->select("SELECT * FROM societedhonneur where Prenom like '$users'");
     return $results;
 });
 
